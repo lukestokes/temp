@@ -4,7 +4,8 @@ include 'CurlClient.php';
 print 'HELLO?<br />';
 
 $redis = new Redis();
-$redis->connect('redis://7dae2b7237b9a60dc35aacff91b40786@cowfish.redistogo.com:9134');
+//$redis->connect('redis://7dae2b7237b9a60dc35aacff91b40786@cowfish.redistogo.com:9134');
+$redis->connect('cowfish.redistogo.com','9134');
 
 var_dump($redis->ping());
 
