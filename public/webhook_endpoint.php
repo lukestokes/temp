@@ -97,6 +97,11 @@ if ($debug) {
     //trigger_error(serialize($xml->asXML()));
 }
 $xml->registerXPathNamespace('atom', 'http://www.w3.org/2005/Atom');
+$xml->registerXPathNamespace('ticket', 'urn:org.restfest.2012.hackday.helpdesk.ticket');
+$xml->registerXPathNamespace('user', 'urn:org.restfest.2012.hackday.helpdesk.user');
+$xml->registerXPathNamespace('comment', 'urn:org.restfest.2012.hackday.helpdesk.comment');
+$xml->registerXPathNamespace('comments', 'urn:org.restfest.2012.hackday.helpdesk.comments');
+
 foreach($xml->event as $event) {
     if ($debug) {
         // trigger_error(serialize($event->asXML()));
