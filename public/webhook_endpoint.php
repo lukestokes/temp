@@ -28,63 +28,48 @@ $debug = 1;
 //$xml = file_get_contents("php://input");
 
 $xml = '<changes
-xmlns="urn:org.restfest.2012.hackday.helpdesk.feed"
-xmlns:ticket="urn:org.restfest.2012.hackday.helpdesk.ticket"
-xmlns:comment="urn:org.restfest.2012.hackday.helpdesk.comment"
-xmlns:atom="http://www.w3.org/2005/Atom">
-
-<atom:link rel="prev" type="application/vnd.org.restfest.2012.hackday+xml" href="http://../feed?from=2012-09-13T12:00:00Z&amp;to=2012-09-13T12:00:59Z" />
-<atom:link rel="self" type="application/vnd.org.restfest.2012.hackday+xml" href="http://../feed?from=2012-09-13T12:01:00Z&amp;to=2012-09-13T12:01:59Z" />
-<atom:link rel="next" type="application/vnd.org.restfest.2012.hackday+xml" href="http://../feed?from=2012-09-13T12:02:00Z&amp;to=2012-09-13T12:02:59Z" />
-
-<from>2012-09-13T12:01:00Z</from>
-<to>2012-09-13T12:01:59Z</to>
-
-<event timestamp="2012-09-13T12:01:24Z" type="ticket_creation">
-<ticket:ticket>
-	<atom:link rel="self" href="http://.../tickets/9172361" type="application/vnd.org.restfest.2012.hackday+xml" />
+	xmlns="urn:org.restfest.2012.hackday.helpdesk.feed"
+	xmlns:ticket="urn:org.restfest.2012.hackday.helpdesk.ticket"
+	xmlns:comment="urn:org.restfest.2012.hackday.helpdesk.comment"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:user="urn:org.restfest.2012.hackday.helpdesk.user"
+>
+	<atom:link rel="prev" type="application/vnd.org.restfest.2012.hackday+xml" href="http://../feed?from=2012-09-13T12:00:00Z&amp;to=2012-09-13T12:00:59Z" />
+	<atom:link rel="self" type="application/vnd.org.restfest.2012.hackday+xml" href="http://../feed?from=2012-09-13T12:01:00Z&amp;to=2012-09-13T12:01:59Z" />
+	<atom:link rel="next" type="application/vnd.org.restfest.2012.hackday+xml" href="http://../feed?from=2012-09-13T12:02:00Z&amp;to=2012-09-13T12:02:59Z" />
 	
-	<ticket:created_at>2012-09-13T12:03:00Z</ticket:created_at>
-	<ticket:updated_at>2012-09-13T12:03:00Z</ticket:updated_at>
+	<from>2012-09-13T12:01:00Z</from>
+	<to>2012-09-13T12:01:59Z</to>
 	
-	<ticket:summary>Running out of coffee</ticket:summary>
+	<event timestamp="2012-09-13T12:01:07Z" type="ticket_deletion">
+		<atom:link rel="http://helpdesk.hackday.2012.restfest.org/rels/ticket" href="http://.../tickets/71263471" type="application/vnd.org.restfest.2012.hackday+xml" />
+	</event>
+	<event timestamp="2012-09-13T12:01:24Z" type="ticket_update">
+		<ticket:ticket>
+			<atom:link rel="self" href="http://.../tickets/9172361" type="application/vnd.org.restfest.2012.hackday+xml" />
+			<ticket:summary>New title :)</ticket:summary>
+			<!-- all other fields here too -->
+		</ticket:ticket>
+	</event>
+	<event timestamp="2012-09-13T12:01:49Z" type="comment_creation">
+		<comment:comment>
+			<atom:link rel="self" href="http://.../tickets/9172361/comments/askjklz1287a" type="application/vnd.org.restfest.2012.hackday+xml" />
+			<atom:link rel="http://helpdesk.hackday.2012.restfest.org/rels/ticket" href="http://.../tickets/9172361" type="application/vnd.org.restfest.2012.hackday+xml" />
+			<comment:created_at>2012-09-13T12:01:49Z</comment:created_at>
+			<comment:author>
+				<user:user>
+					<user:name>Joe Cool</user:name>
+					<user:email>snoopy@peanuts.com</user:email>
+				</user:user>
+			</comment:author>
+			<comment:body>I really like this idea</comment:body>
+		</comment:comment>
+	</event>
 	
-	<ticket:description>It appears that we\'ll be running out of coffee any moment.
-
-I\'m worried that we might have a full blown riot on our hands if that happens.</ticket:description>
-	
-	<ticket:author>
-		<user:user>
-			<name>David Zuelke</name>
-			<email>david.zuelke@bitextender.com</email>
-		</user:user>
-	</ticket:author>
-	
-	<ticket:assignee>
-		<user:user>
-			<atom:link rel="self" href="http://.../users/817236781" type="application/vnd.org.restfest.2012.hackday+xml" />
-			<name>Benjamin Young</name>
-		</user:user>
-	</ticket:assignee>
-	
-	<ticket:tag>restfest</ticket:tag>
-	<ticket:tag>breakfast</ticket:tag>
-	<ticket:tag>coffee</ticket:tag>
-	<ticket:tag>catering</ticket:tag>
-	
-	<ticket:state>open</ticket:state>
-	
-	<!-- <atom:link rel="http://helpdesk.hackday.2012.restfest.org/rels/ticket/state" href="http://.../tickets/9172361/state" type="text/plain" /> -->
-	
-	<comments:comments count="2">
-		<atom:link rel="http://helpdesk.hackday.2012.restfest.org/rels/comments" href="http://.../tickets/9172361/comments" type="application/vnd.org.restfest.2012.hackday.helpdesk+xml" />
-	</comments:comments>
-</ticket:ticket>
-
-<xhtml:form rel="http://helpdesk.hackday.2012.restfest.org/rels/changes" action="http://.../feed" type="application/vnd.org.restfest.2012.hackday+xml" method="get">
-<input type="datetime" name="from" />
-<input type="datetime" name="to" />
-</xhtml:form>
+	<xhtml:form rel="http://helpdesk.hackday.2012.restfest.org/rels/changes" action="http://.../feed" type="application/vnd.org.restfest.2012.hackday+xml" method="get">
+		<input type="datetime" name="from" />
+		<input type="datetime" name="to" />
+	</xhtml:form>
 </changes>';
 
 
