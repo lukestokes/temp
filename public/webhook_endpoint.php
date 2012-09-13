@@ -212,15 +212,22 @@ function logError($error_code, $error_message)
     trigger_error($error_code . ': ' . $error_message);
     var_dump($error_code . ': ' . $error_message);
 }
+
+$redis = new Redis();
+$redis->open('redis://7dae2b7237b9a60dc35aacff91b40786@cowfish.redistogo.com:9134');
+
 function saveUrlMapping($source,$destination)
 {
-    return apc_store($source,$destination);
+    global $redis;    
+    return $redis->set($source,$destination);
 }
 function getUrlMapping($source)
 {
-    return apc_fetch($source);
+    global $redis;    
+    return $redis->get($source);
 }
 function removeUrlMapping($source)
 {
-    return apc_delete($source);
+    global $redis;    
+    return $redis->del($source);
 }
