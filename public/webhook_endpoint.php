@@ -1,6 +1,8 @@
 <?php
 include 'CurlClient.php';
 
+print 'HELLO?<br />';
+
 /**
  *
  * TABLES:
@@ -215,6 +217,7 @@ function logError($error_code, $error_message)
 
 $redis = new Redis();
 $redis->connect('redis://7dae2b7237b9a60dc35aacff91b40786@cowfish.redistogo.com:9134');
+
 var_dump($redis->ping());
 
 function saveUrlMapping($source,$destination)
