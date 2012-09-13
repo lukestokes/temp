@@ -79,7 +79,7 @@ I\'m worried that we might have a full blown riot on our hands if that happens.<
 	<comments:comments count="2">
 		<atom:link rel="http://helpdesk.hackday.2012.restfest.org/rels/comments" href="http://.../tickets/9172361/comments" type="application/vnd.org.restfest.2012.hackday.helpdesk+xml" />
 	</comments:comments>
-</ticket>
+</ticket:ticket>
 
 <xhtml:form rel="http://helpdesk.hackday.2012.restfest.org/rels/changes" action="http://.../feed" type="application/vnd.org.restfest.2012.hackday+xml" method="get">
 <input type="datetime" name="from" />
